@@ -37,7 +37,7 @@ export default class Recipe {
 
 		const newIngredients = this.ingredients.map(el => {
 			
-			// Unifor units
+			// Uniform units
 			let ingredient = el.toLowerCase();
 			unitsLong.forEach((unit, i) => {
 				ingredient = ingredient.replace(unit, unitsShort[i]);
@@ -49,7 +49,6 @@ export default class Recipe {
 			// Parse ingredients into count, unit and ingredient
 			const arrIng = ingredient.split(' ');
 			const unitIndex = arrIng.findIndex(el2 => units.includes(el2));
-			// console.log("uni---",unitIndex)
 			
 			let objIng;
 			if (unitIndex > -1) {
