@@ -56,7 +56,6 @@ elements.searchResPages.addEventListener('click', e => {
 const controlRecipe = async () => {
 	//Get id from url 
 	const id = window.location.hash.replace('#', '');
-	console.log(id);
 
 	if (id) {
 		// prepare ui for changes
@@ -71,7 +70,6 @@ const controlRecipe = async () => {
 		try {
 			// get recipe data and parse ingredients
 			await state.recipe.getRecipe();
-			console.log("erewrewrew",state.recipe.ingredients);
 			state.recipe.parseIngredients();
 
 			// calculate servings and time
@@ -92,3 +90,19 @@ const controlRecipe = async () => {
 };
 
 ['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
+
+// Handling recipe button clicks 
+elements.recipe.addEventListener('click', e => {
+	if (e.target.matches('.btn-decrease, .btn-decrease *')) {
+		// Decrease button is clicked
+		if (state.recipe.servings > 1) {
+			state.recipe.updateServings('dec');
+			recipeView.updateServingsIngredients(state.recipe);
+		}
+	} else if (e.target.matches('.btn-increase, .btn-increase *')) {
+		// Increase button is clicked
+		state.recipe.updateServings('inc');
+		recipeView.updateServingsIngredients(state.recipe);
+	}
+	console.log(state.recipe);
+});
