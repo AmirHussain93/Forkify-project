@@ -10,7 +10,6 @@ import Likes from './models/Likes';
 
 //Global state of the app, search object, current recipe object, shopping list object, liked recipes
 const state ={};
-window.state = state;
 
 /**SEARCH CONTROLLER*/
 const controlSearch = async () => {
@@ -199,5 +198,3 @@ elements.recipe.addEventListener('click', e => {
 		controlLike();
 	}
 });
-
-window.l = new List();
